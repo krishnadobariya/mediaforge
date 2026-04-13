@@ -37,24 +37,7 @@ const allowedOrigins = [
 ].filter(Boolean);
 
 app.use(cors({
-  origin: function (origin, callback) {
-    // Allow if:
-    // 1. No origin (like mobile apps or curl)
-    // 2. Matches allowed list
-    // 3. Is a localhost address
-    // 4. Is any Vercel deployment URL
-    const isAllowed = !origin || 
-                     allowedOrigins.some(ao => ao.replace(/\/$/, '') === origin.replace(/\/$/, '')) || 
-                     origin.startsWith('http://localhost:') ||
-                     origin.endsWith('.vercel.app');
-
-    if (isAllowed) {
-      callback(null, true);
-    } else {
-      console.warn(`[CORS REJECTED] Origin: ${origin}`);
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
+  origin: true, // Echoes the request origin back to the browser (best for debugging)
   credentials: true
 }));
 
