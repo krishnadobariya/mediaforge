@@ -1,0 +1,16 @@
+{
+  "name": "mediaforge-ai",
+  "version": "1.0.0",
+  "description": "All-in-one AI media processing platform",
+  "scripts": {
+    "start": "node backend/src/index.js",
+    "server": "nodemon backend/src/index.js",
+    "client": "cd frontend && npm run dev",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "install-all": "npm install && cd backend && npm install && cd ../frontend && npm install"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0",
+    "nodemon": "^3.0.1"
+  }
+}
