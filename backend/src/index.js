@@ -37,8 +37,11 @@ const allowedOrigins = [
 ].filter(Boolean);
 
 app.use(cors({
-  origin: true, // Echoes the request origin back to the browser (best for debugging)
-  credentials: true
+  origin: true, 
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept'],
+  exposedHeaders: ['set-cookie']
 }));
 
 app.use(express.json());
